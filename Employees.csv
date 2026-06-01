@@ -1,0 +1,6 @@
+Id,Name,Designation,DateOnly,IsActive
+1,John Smith,Software Engineer,2026-01-15,true
+2,Emma Johnson,Project Manager,2026-02-10,true
+3,Michael Brown,QA Analyst,2026-03-05,false
+4,Olivia Davis,HR Specialist,2026-04-20,true
+5,William Wilson,System Administrator,2026-05-12,false
