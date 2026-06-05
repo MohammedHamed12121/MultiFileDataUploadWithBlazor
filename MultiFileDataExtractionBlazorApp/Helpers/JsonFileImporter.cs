@@ -1,10 +1,11 @@
-﻿using MultiFileDataExtractionBlazorApp.Data;
+﻿using Microsoft.AspNetCore.Components.Forms;
+using MultiFileDataExtractionBlazorApp.Data;
 
 namespace MultiFileDataExtractionBlazorApp.Helpers
 {
 	public class JsonFileImporter : IFileImporter
 	{
-		public List<Employee> Import()
+		public List<Employee> Import(string _fileName)
 		{
 			return new List<Employee>()
 			{

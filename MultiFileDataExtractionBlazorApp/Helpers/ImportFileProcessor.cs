@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Components.Forms;
 using MultiFileDataExtractionBlazorApp.Data;
 
 namespace MultiFileDataExtractionBlazorApp.Helpers
@@ -12,9 +13,9 @@ namespace MultiFileDataExtractionBlazorApp.Helpers
 			_importerService = importerService;
 		}
 
-		public List<Employee> ProcessImport()
+		public List<Employee> ProcessImport(string _fileName)
 		{
-			return _importerService.Import();
+			return _importerService.Import(_fileName);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿@page "/"
-
+@inject IWebHostEnvironment env
+@inject EmployeeService EmployeeService
 
 <InputFile OnChange="OnFileChanged" multiple></InputFile>
 <pre>@status</pre>
@@ -27,7 +28,7 @@
 @code {
 	string? status;
 
-	async void OnFileChanged(InputFileChangeEventArgs e)
+	async Task OnFileChanged(InputFileChangeEventArgs e)
 	{
 		try
 		{
@@ -40,6 +41,10 @@
 
 				// Get the file type
 				string fileType = file.ContentType;
+
+				// Upload the file to wwwroot/Upload for processing (it will be deleted later on)
+				string filePath = await UploadFile(file);
+
 				switch (fileType.ToLower())
 				{
 					case "text/csv":
@@ -55,11 +60,14 @@
 
 				if (processor != null)
 				{
-					List<Employee> newEmployees = processor.ProcessImport();
+					List<Employee> newEmployees = processor.ProcessImport(filePath);
 					EmployeeService.AddEmployee(newEmployees);
 					status += "\nSuccessfully processed file: " + file.Name;
 					RefreshEmployees();
 				}
+
+				// finally delete the uploaded file
+				DeleteFile(filePath);
 			}
 
 		}
@@ -83,5 +91,24 @@
 	{
 		employees = EmployeeService.GetEmployees();
 		_ = InvokeAsync(StateHasChanged);
+	}
+
+	private async Task<string> UploadFile(IBrowserFile file)
+	{
+		var filePath = Path.Combine(env.WebRootPath, "Upload", file.Name);
+		using (var stream = new FileStream(filePath, FileMode.Create))
+		{
+			await file.OpenReadStream().CopyToAsync(stream);
+		}
+		return filePath;
+	}
+
+	
+	private void DeleteFile(string filePath)
+	{
+		if (File.Exists(filePath))
+		{
+			File.Delete(filePath);
+		}
 	}
 }
