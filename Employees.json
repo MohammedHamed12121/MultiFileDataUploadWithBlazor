@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 7,
+    "Name": "Ahmed Hassan",
+    "Designation": "Software Engineer",
+    "DateOnly": "2026-01-15",
+    "IsActive": true
+  },
+  {
+    "Id": 8,
+    "Name": "Sara Mohamed",
+    "Designation": "Project Manager",
+    "DateOnly": "2026-02-10",
+    "IsActive": true
+  },
+  {
+    "Id": 9,
+    "Name": "Omar Khaled",
+    "Designation": "Business Analyst",
+    "DateOnly": "2026-03-05",
+    "IsActive": false
+  },
+  {
+    "Id": 10,
+    "Name": "Mona Ali",
+    "Designation": "QA Engineer",
+    "DateOnly": "2026-04-20",
+    "IsActive": true
+  },
+  {
+    "Id": 11,
+    "Name": "Youssef Ibrahim",
+    "Designation": "DevOps Engineer",
+    "DateOnly": "2026-05-12",
+    "IsActive": true
+  },
+  {
+    "Id": 12,
+    "Name": "Nour El Din",
+    "Designation": "UI/UX Designer",
+    "DateOnly": "2026-06-01",
+    "IsActive": false
+  }
+]
